@@ -1,0 +1,47 @@
+<form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div>
+        <div class="form-item">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" formControlName="name">
+        </div>
+    
+        <div class="form-item">
+            <label for="surname">Surname</label>
+            <input type="text" name="name" id="surname" formControlName="surname">
+        </div>
+    
+        <div class="form-item">
+            <label for="id">ID</label>
+            <input type="text" name="name" id="id" formControlName="id">
+        </div>
+    
+        <div formGroupName="address">
+            <div class="form-item">
+                <label for="street">Street</label>
+                <input type="text" name="name" id="street" formControlName="street">
+            </div>
+            <div class="form-item">
+                <label for="city">City</label>
+                <input type="text" name="name" id="city" formControlName="city">
+            </div>
+        </div>
+    
+        <div formArrayName="languages" class="languages">
+            <div>Languages</div>
+            <div *ngFor="let alias of languages.controls; let i=index" class="form-item">
+              <label for="alias-{{ i }}"  style="font-size: 12px;">Language:</label>
+              <input id="alias-{{ i }}" type="text" [formControlName]="i">
+            </div>
+            <button type="button" class="language-button" (click)="addLanguage()">Add another language</button>
+        </div>
+    
+        <button type="submit" class="button">Submit</button>
+    </div>
+</form>
+
+<div class="student-list-section">
+    <div class="student-list-title">Student list</div>
+    <ng-container *ngFor="let student of studentList">
+        <app-student-item [student]="student"></app-student-item>
+    </ng-container>
+</div>

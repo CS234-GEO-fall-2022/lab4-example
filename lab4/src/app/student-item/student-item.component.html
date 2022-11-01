@@ -1,0 +1,28 @@
+<div class="container">
+    <div>
+        <span class="label">name: </span>
+        <span>{{student.name}}</span>
+    </div>
+    <div>
+        <span class="label">surname: </span>
+        <span>{{student.surname}}</span>
+    </div>
+    <div>
+        <span class="label">id: </span>
+        <span>{{student.id}}</span>
+    </div>
+    <div>
+        <span class="label">Address: </span>
+        <span style="color: blue;"> city-</span>
+        <span>{{student.address.city}} </span>
+        <span style="color: blue;"> street-</span>
+        <span>{{student.address.street}} </span>
+    </div>
+    <div>
+        <span class="label">languages: </span>
+        <span *ngFor="let language of student.languages let i=index">
+            <span>{{language}}</span>
+            <span *ngIf="i < student.languages.length - 1">, </span>
+        </span>
+    </div>
+</div>
